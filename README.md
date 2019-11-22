@@ -50,8 +50,8 @@ Clone this project repository to your local machine, by running command
 #### install
 `npm install`
 
-#### Serve
-`npm run server`
+#### serve
+`npm run server`                   
 `npm run start`
 
 #### Running unit tests
