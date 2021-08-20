@@ -61,7 +61,7 @@ export class TodoComponent implements OnInit {
     this.newTaskForm.controls.id.setValue(taskToEdit.id);
     this.newTaskForm.controls.label.setValue(taskToEdit.label);
     this.newTaskForm.controls.description.setValue(taskToEdit.description);
-    this.newTaskForm.controls.category.setValue(Category[taskToEdit.category]);
+    this.newTaskForm.controls.category.setValue(taskToEdit.category);
     this.newTaskForm.controls.done.setValue(taskToEdit.done);
     this.openModal();
   }
