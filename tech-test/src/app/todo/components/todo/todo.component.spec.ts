@@ -30,8 +30,8 @@ describe('TodoComponent', () => {
     });
 
     tasks = [
-      new Task(2, 'task two', 'this is my second description', Category.house, new Date(1, 1, 2021)),
-      new Task(1, 'task one', 'this is my first description', Category.bureaucracy, false),
+      new Task(2, 'task two', 'this is my second description', Category.House, new Date(1, 1, 2021)),
+      new Task(1, 'task one', 'this is my first description', Category.Bureaucracy, false),
     ];
 
     fixture = TestBed.createComponent(TodoComponent);

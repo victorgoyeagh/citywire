@@ -11,6 +11,7 @@ export class TasksComponent {
 
   @Input() public taskData: Task;
   @Output() public onDeleteTask: EventEmitter<number> = new EventEmitter<number>();
+  @Output() public onEditTask: EventEmitter<number> = new EventEmitter<number>();
 
   public toggleMarkTaskAsDone() {
     const isMarkedAsDone = this.isMarkedAsDone;
@@ -23,5 +24,9 @@ export class TasksComponent {
 
   public deleteTask() {
     this.onDeleteTask.emit(this.taskData.id);
+  }
+
+  public initEditTask(id: number) {
+    this.onEditTask.emit(id);
   }
 }

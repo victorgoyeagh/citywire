@@ -11,7 +11,8 @@ AddF behavioural tests, test binding in rendered UI
 Add e2e tests, to test workflow
 fix all tslint errors/warnings
 Use router to navigate directly to modal using deep linking
-
+Categories dropdown as a single component, used as filter and in add form
+QA Test thoroughly
 # TechTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.

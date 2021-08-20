@@ -16,7 +16,7 @@ describe('TasksComponent', () => {
     })
     .compileComponents();
 
-    task = new Task(1, 'task one', 'this is my first description', Category.bureaucracy, false);
+    task = new Task(1, 'task one', 'this is my first description', Category.Bureaucracy, false);
   }));
 
   beforeEach(() => {
