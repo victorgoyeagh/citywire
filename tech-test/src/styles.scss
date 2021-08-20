@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+$font-size-16: 16px;
+$font-size-12: 12px;
+
+@mixin width_20 {
+  width: 20%;
+}
+
+h1 {
+  margin: 20px auto;
+  text-align: center;
+}
+
+table {
+  caption {
+    float: left;
+    width: 100%;
+  }
+}
+
+app-tasks {
+  display: table-row;
+
+  tr {
+    display: contents;
+  }
+
+  .columns {
+    > * {
+      padding: .5rem .5rem;
+    }
+    &__id {
+      width: 10%;
+    }
+
+    &__label {
+      width: 40%;
+      .name {
+        font-weight: bold;
+        font-size: $font-size-16;
+      }
+      .description {
+        font-size: $font-size-12;
+      }
+    }
+
+    &__category {
+      @include width_20;
+    }
+
+    &__done {
+      @include width_20;
+    }
+
+    &__del {
+      width: 10%;
+    }
+  }
+}
+

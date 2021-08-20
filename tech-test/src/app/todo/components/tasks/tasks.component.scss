@@ -1,0 +1,7 @@
+tr.marked-as-done {
+  .columns__id,
+  .columns__category,
+  .columns__label {
+    text-decoration: line-through;
+  }
+}

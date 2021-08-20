@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <caption>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Add New Task
+          </button>
+        </caption>
+        <thead>
+          <tr class="columns">
+            <th scope="col" class="columns__id">#</th>
+            <th scope="col" class="columns__label">Name & Description</th>
+            <th scope="col" class="columns__category">Category</th>
+            <th scope="col" class="columns__done">Status</th>
+            <th scope="col" class="columns__del"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <app-tasks *ngFor="let task of tasks" [taskData]="task" (onDeleteTask)="onDeleteTask($event)"></app-tasks>
+          <tr *ngIf="tasks?.length === 0">
+            <td colspan="5">
+              No data to display
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-success" (click)="saveTask()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="newTaskForm">
+          <legend><input type="hidden" formControlName="id" /></legend>
+          <div class="form-group">
+            <label for="label">Label</label>
+            <input id="label" name="label" type="text" class="form-control" formControlName="label" />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input id="description" name="description" type="text" class="form-control" formControlName="description" />
+          </div>
+          <div class="form-group">
+            <label for="name">Category</label>
+            <select name="category" class="form-control" formControlName="category">
+              <option value="">Select category...</option>
+              <option *ngFor="let category of getCategories()">{{ category }}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addNewTask()" data-dismiss="modal" [disabled]="!newTaskForm.valid">Add Task</button>
+      </div>
+    </div>
+  </div>
+</div>
