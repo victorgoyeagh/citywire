@@ -12,7 +12,7 @@ Add e2e tests, to test workflow
 fix all tslint errors/warnings
 Use router to navigate directly to modal using deep linking
 Categories dropdown as a single component, used as filter and in add form
-QA Test thoroughly
+QA Test thoroughly all workflows = fix save vs filter vs delete
 Update variables and ids, apply more descriptive names
 Put category in an overlay and add filter summary
 # TechTest
