@@ -1,88 +1,48 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="row">
-        <div class="col-4">
-          <button id="initModal" (click)="initAddNewTask()" type="button" class="btn btn-primary">
-            Add New Task
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="col-12">
+<div class="row">
+  <div class="col-12">
+    <h1 class="title-text">Overview</h1>
+    <div class="table-responsive">
       <table class="table">
-        <thead>
-          <tr class="columns">
-            <th scope="col" class="columns__id">#</th>
-            <th scope="col" class="columns__label">Name & Description</th>
-            <th scope="col" class="columns__category">
-              Category
-              <select (change)="filterTasksByCategory($event)" name="category" class="form-control">
-                <option value="">All categories</option>
-                <option *ngFor="let category of getCategories()">{{ category }}</option>
-              </select>
-            </th>
-            <th scope="col" class="columns__done">Status</th>
-            <th scope="col" class="columns__del"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <app-tasks *ngFor="let task of tasks" [taskData]="task"
-          (onEditTask)="onEditTask($event)"
-          (onDeleteTask)="onDeleteTask($event)"></app-tasks>
-          <tr *ngIf="tasks?.length === 0">
-            <td colspan="5">
+        <tbody *ngIf="(tasks | filter: searchParams)?.length < 1">
+          <tr>
+            <td colspan="3">
               No data to display
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="(tasks | filter: searchParams)?.length > 0">
+          <tr *ngFor="let task of tasks | filter: searchParams" class="column" [ngClass]="{ 'marked-as-done': task.done }">
+            <td class="column-done">
+              <mat-checkbox [checked]="task.done" (change)="toggleMarkAsDone(task.id)"></mat-checkbox>
+            </td>
+            <td class="column-label">
+              <hr [ngClass]="{ 'no-strike' : !task.done }" />
+              <span>{{ task.label }}</span>
+              <button class="btn" [ngClass]="{ 'done': task.done }" (click)="deleteTask(task.id)">
+                <i class="fa fa-trash"></i>
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
-      <button class="btn btn-success" (click)="saveTask()">Save</button>
+</div>
+
+<div class="row" [formGroup]="taskForm">
+  <div class="col-12">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend plus">
+        <span class="input-group-text">
+          <button class="btn"><i class="fa fa-plus"></i></button>
+        </span>
+      </div>
+      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" formControlName="label">
+      <div class="input-group-append paper">
+        <span class="input-group-text">
+          <button class="btn" (click)="addNewTask()"><i class="fa fa-paper-plane"></i></button>
+        </span>
+      </div>
     </div>
   </div>
 </div>
-
-<ng-template #mymodal let-modal>
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ (currentAction === Action.Edit) ? 'Update Task' : 'Add New Task' }}</h5>
-        <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="newTaskForm">
-          <legend>
-            <input type="hidden" formControlName="id" />
-            <input type="hidden" formControlName="done" />
-          </legend>
-          <div class="form-group">
-            <label for="label">Label</label>
-            <input id="label" name="label" type="text" class="form-control" formControlName="label" />
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <input id="description" name="description" type="text" class="form-control" formControlName="description" />
-          </div>
-          <div class="form-group">
-            <label for="name">Category</label>
-            <select name="category" class="form-control" formControlName="category">
-              <option value="">Select category...</option>
-              <option *ngFor="let category of getCategories()">{{ category }}</option>
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
-        <button type="button" class="btn btn-primary" (click)="(currentAction === Action.Edit) ? onEndEditTask(newTaskForm.controls.id.value) : addNewTask()" data-dismiss="modal" [disabled]="!newTaskForm.valid">
-          {{ (currentAction === Action.Edit) ? 'Update Task' : 'Add Task' }}
-        </button>
-      </div>
-    </div>
-
-</ng-template>

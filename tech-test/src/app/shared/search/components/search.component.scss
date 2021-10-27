@@ -1,0 +1,31 @@
+@import './../../../../assets/sass/variables';
+
+.search-container {
+  right: 0px;
+  position: absolute;
+  top: 5px;
+  width: 220px;
+
+  @media screen and (min-width: $bp-lg) {
+    position: relative;
+  }
+  .fa {
+    position: absolute;
+    top: 4px;
+    left: 0px;
+    &.fa-search {
+      &:before {
+        font-size: 22px;
+      }
+    }
+  }
+  input {
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+    font-size: 0.8rem;
+    padding-left: 36px;
+    border: 0px solid transparent;
+  }
+}

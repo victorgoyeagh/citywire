@@ -1,0 +1,68 @@
+@import './../../../assets/sass/variables';
+
+.header {
+  padding: 10px 0px;
+  .profile {
+    text-align: right;
+    &-name {
+      font-size: 0.8rem;
+      font-weight: bold;
+      display: inline-block;
+      .fa {
+        &.fa-chevron-down {
+          font-weight: normal;
+          margin: 0px 4px;
+          color: $color-profile-arrow--grey;
+        }
+      }
+    }
+    &-bell,
+    &-query {
+      margin-right: 20px;
+      display: block;
+      float: left;
+      margin-top: 3px;
+      .fa {
+        &::before {
+          font-size: 20px;
+        }
+      }
+    }
+    &-query {
+      .fa {
+        &::before {
+          font-size: 22px;
+        }
+      }
+    }
+    &-bell {
+      position: relative;
+      span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50px;
+        background-color: $color-profile-tablet--red;
+        display: block;
+        top: 0px;
+        right: 0px;
+        position: absolute;
+      }
+    }
+    &-details {
+      padding-top: 10px;
+      float: initial;
+      @media screen and (min-width: $bp-sm) {
+        float: right;
+      }
+    }
+    &-image {
+      border-radius: 50px;
+      overflow: hidden;
+      max-width: 50px;
+      float: right;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

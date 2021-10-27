@@ -1,59 +1,29 @@
-$font-size-16: 16px;
-$font-size-12: 12px;
 
-@mixin width_20 {
-  width: 20%;
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', "Helvetica Neue", sans-serif;
+  letter-spacing: 1px;
 }
 
 h1 {
+  font-size: 30px;
   margin: 20px auto;
-  text-align: center;
 }
 
-table {
-  caption {
-    float: left;
-    width: 100%;
+.mat-checkbox {
+  .mat-checkbox-frame {
+    border-radius: 50px !important;
+    width: 26px;
+    height: 26px;
+    top: -5px !important;
+    left: -5px !important;
+  }
+
+  .mat-checkbox-background {
+    border-radius: 50px !important;
   }
 }
-
-app-tasks {
-  display: table-row;
-
-  tr {
-    display: contents;
-  }
-
-  .columns {
-    > * {
-      padding: .5rem .5rem;
-    }
-    &__id {
-      width: 10%;
-    }
-
-    &__label {
-      width: 40%;
-      .name {
-        font-weight: bold;
-        font-size: $font-size-16;
-      }
-      .description {
-        font-size: $font-size-12;
-      }
-    }
-
-    &__category {
-      @include width_20;
-    }
-
-    &__done {
-      @include width_20;
-    }
-
-    &__del {
-      width: 10%;
-    }
-  }
-}
-

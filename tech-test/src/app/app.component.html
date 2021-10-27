@@ -1,5 +1,12 @@
 <div class="container-fluid">
-  <h1 class="title-text">Welcome to Victor's test for Origin technical: {{title}}</h1>
-  <app-todo></app-todo>
+  <div class="row page">
+    <div class="col-sm-2 lft-col">
+      <app-left-nav></app-left-nav>
+    </div>
+    <div class="col-sm-10 rgt-col">
+      <app-header (onHeaderSearch)="onHeaderSearch($event)"></app-header>
+      <app-todo [searchParams]="keyword"></app-todo>
+    </div>
+  </div>
 </div>
 

@@ -1,4 +1,4 @@
-import { Category, Task } from './../components/model/task.dto';
+import { Category, Task } from '../model/task.dto';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -16,8 +16,8 @@ describe('TodoService', () => {
     });
 
     tasks = [
-      new Task(2, 'task two', 'this is my second description', Category.House, new Date(1, 1, 2021)),
-      new Task(1, 'task one', 'this is my first description', Category.Bureaucracy, false),
+      new Task(2, 'task two', true),
+      new Task(1, 'task one', false),
     ];
 
     httpTestingController = TestBed.get(HttpTestingController);

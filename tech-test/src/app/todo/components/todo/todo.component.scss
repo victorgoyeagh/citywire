@@ -1,0 +1,108 @@
+@import './../../../../assets/sass/variables';
+
+table {
+  tbody {
+    border-top: 1px solid $color-table__grey;
+    tr {
+      &.marked-as-done {
+        color: $color-markedtext--grey;
+      }
+      td {
+        padding: 10px;
+        height: 48px;
+      }
+    }
+  }
+}
+
+.column {
+  &-label {
+    width: 96%;
+    position: relative;
+
+    hr {
+      position: absolute;
+      display: block;
+      top: 23px;
+      left: 0px;
+      width: 99%;
+      height: 2px;
+      margin: 0px 0% 0px 1%;
+      background-color: $color-grey;
+
+      &.no-strike {
+        display: none;
+      }
+    }
+
+    button {
+      &.btn {
+        display: none;
+        float: right;
+        padding: 0px 6px;
+
+        .fa.fa-trash {
+          &::before {
+            color: $color-trash__red;
+            background-color: $color-trash-bg__grey;
+            padding: 5px;
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      &> {
+        button {
+          &.btn:not(.done) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  &-done {
+    width: 2%;
+  }
+  &-done{
+    padding: 8px 0px 5px 10px !important;
+  }
+}
+
+.input-group {
+  &-text {
+    background-color: transparent;
+    padding: 0px 0px;
+    .btn {
+      .fa {
+        &.fa-plus,
+        &.fa-paper-plane {
+          &::before {
+            color: $color-icon__purple;
+          }
+        }
+      }
+    }
+  }
+  .input-group-prepend {
+    &.plus {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+  .input-group-append {
+    &.plus {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+  }
+  input.form-control {
+    color: $color-inputtext--grey;
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+  }
+}
+
+

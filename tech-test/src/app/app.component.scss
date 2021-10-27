@@ -1,7 +1,28 @@
-.title-text{
-  font-size: 20px;
-  line-height: 1.5;
-  color: #20364b;
-  font-weight: 600;
-  font-family: 'ProximaNova', sans-serif;
+@import './../assets/sass/variables';
+
+.container-fluid {
+  height: 100%;
+}
+
+.page {
+  @media screen and (min-width: $bp-lg) {
+    min-height: calc(100% - 0px);
+  }
+  .lft-col {
+    @media screen and (min-width: $bp-lg) {
+      border-right: 1px solid $color-navbdr__grey;
+      min-height: calc(100% - 0px);
+      width: 16%;
+    }
+  }
+  .rgt-col {
+    width: 100%;
+    @media screen and (min-width: $bp-lg) {
+      width: 84%;
+    }
+  }
+  .lft-col,
+  .rgt-col {
+    float: left;
+  }
 }
